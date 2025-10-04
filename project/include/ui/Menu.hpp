@@ -4,28 +4,41 @@
 #include "../utils/Common.hpp"
 #include <string>
 #include <vector>
-
+#include <SFML/Graphics.hpp>
 class Graphics; 
 
 class Menu 
 {
 private:
-    std::vector<std::string> options;  // 菜单选项
-    int selectedIndex;                 // 当前选中的选项索引
+    bool upPressed = false;       // 上方向键按下事件标志
+    bool downPressed = false;     // 下方向键按下事件标志
+    bool returnPressed = false;   // 回车键按下事件标志
+    bool leftMousePressed = false;// 鼠标左键按下事件标志
+    // 仅保留2个核心选项
+    std::vector<std::string> options = {"Start Game", "Exit"};
+    int selectedIndex = 0;  // 0=Start, 1=Exit
     bool isActive = false;
-    bool ignoreFirstEnter = false;
+    bool ignoreFirstInput = false;
+    // 按钮样式配置（可自定义调整）
+    const int BTN_WIDTH = 220;
+    const int BTN_HEIGHT = 70;
+    const int BTN_SPACING = 30;  // 按钮间距
+    const sf::Color BTN_NORMAL = sf::Color(40, 40, 60);       // 常态：深色风暴
+    const sf::Color BTN_HOVER = sf::Color(80, 80, 120);       // 悬停：霓虹炫彩
+    const sf::Color BTN_BORDER = sf::Color(200, 200, 255);    // 边框：万里晴空
+    const sf::Color TEXT_COLOR = sf::Color(255, 255, 255);    // 文字：纯净幻想
+    const int TEXT_SIZE = 28;
+
+    sf::Font font;  // 按钮文字字体
+    // 预计算按钮位置（避免重复计算）
+    std::vector<sf::FloatRect> btnBounds;
+
 public:
     Menu();
-
-    // 处理菜单输入
-    int handleInput();
-
-    // 绘制菜单（通过Graphics）
-    void draw(Graphics& graphics);
-    // 设置激活状态
+    int handleInput(const sf::RenderWindow& window);
+    void draw(sf::RenderWindow& window) const;  // 绘制按钮菜单
     void setActive(bool active);
-    // Getter
-    int getSelectedMap() const { return selectedIndex - 2; } // 地图选项从索引2开始
+    void handleEvent(const sf::Event& event);
 };
 
 #endif // MENU_HPP

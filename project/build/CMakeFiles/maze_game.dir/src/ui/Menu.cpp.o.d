@@ -230,12 +230,5 @@ CMakeFiles/maze_game.dir/src/ui/Menu.cpp.o: \
  /usr/include/SFML/Graphics/Glsl.hpp /usr/include/SFML/Graphics/Glsl.inl \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
- /usr/include/SFML/Graphics/VertexBuffer.hpp \
- /home/owlage/homework2/project/src/ui/../../include/ui/Graphics.hpp \
- /home/owlage/homework2/project/src/ui/../../include/ui/../core/Player.hpp \
- /home/owlage/homework2/project/src/ui/../../include/ui/../core/../utils/Common.hpp \
- /home/owlage/homework2/project/src/ui/../../include/ui/../core/Map.hpp \
- /home/owlage/homework2/project/src/ui/../../include/ui/../core/TrapManager.hpp \
- /home/owlage/homework2/project/src/ui/../../include/ui/../core/Trap.hpp \
- /home/owlage/homework2/project/src/ui/../../include/ui/../core/Player.hpp \
- /home/owlage/homework2/project/src/ui/../../include/ui/../core/Map.hpp
+ /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/13/iostream \
+ /usr/include/c++/13/istream /usr/include/c++/13/bits/istream.tcc

@@ -30,12 +30,12 @@ Graphics::Graphics() : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Maze 
 }
 bool Graphics::pollEvent(sf::Event& event) 
 {
-    return window.pollEvent(event);
+    return window.pollEvent(event);  
 }
 
-void Graphics::clear() 
+void Graphics::clear(const sf::Color& color) 
 {
-    window.clear(sf::Color::Cyan); // 背景
+    window.clear(color);  
 }
 
 void Graphics::display() 
@@ -70,7 +70,7 @@ void Graphics::drawMap(const Map& map)
             }
 
             // 绘制格子边框
-            cell.setOutlineColor(sf::Color::Black);
+            cell.setOutlineColor(sf::Color::White);
             cell.setOutlineThickness(1);
             window.draw(cell);
         }

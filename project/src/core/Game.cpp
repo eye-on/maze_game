@@ -44,11 +44,14 @@ void Game::handleInput()
             // 胜利/失败状态下按Enter切换到菜单
             if ((state == GameState::GAME_OVER || state == GameState::WIN) &&  event.key.code == sf::Keyboard::Enter) 
             {
-                // 切换到菜单前，先清空所有事件（避免残留按键事件）
-                while (graphics.pollEvent(event)); 
-                state = GameState::MENU;
-                // 激活菜单（触发忽略首次Enter的逻辑）
                 menu.setActive(true);
+                state = GameState::MENU;
+                
+                sf::Event tempEvent;
+                while (graphics.getWindow().pollEvent(tempEvent)) 
+                {
+                    // 什么都不做，只为清空队列   
+                }
             }
             // 游戏中按ESC返回菜单
             else if (state == GameState::PLAYING && event.key.code == sf::Keyboard::Escape) 
@@ -57,25 +60,30 @@ void Game::handleInput()
                 state = GameState::MENU;
                 menu.setActive(true);
             }
+            else if (state == GameState::MENU) 
+            {
+                menu.handleEvent(event);
+            }
+        }
+        else if (event.type == sf::Event::MouseButtonPressed) 
+        {
+            if (state == GameState::MENU) 
+            {
+                menu.handleEvent(event);
+            }
         }
     }
 
     if (state == GameState::MENU) 
     {
-        int menuResult = menu.handleInput();
-        if (menuResult == 0) // 开始游戏
-        { 
-            menu.setActive(false); // 退出菜单时关闭激活状态
+        // 传入窗口引用给handleInput
+        int menuResult = menu.handleInput(graphics.getWindow());
+        if (menuResult == 0) { 
+            menu.setActive(false);
             resetGame();
             state = GameState::PLAYING;
-        } 
-        else if (menuResult == 1) 
-        {
+        } else if (menuResult == 1) { 
             graphics.getWindow().close();
-        }
-        else if (menuResult >= 2) // 选择地图（2=map1,3=map2）
-        { 
-            currentMapIndex = menuResult - 2;
         }
     } 
     else if (state == GameState::PLAYING) 
@@ -155,20 +163,22 @@ void Game::update()
 
 void Game::render() 
 {
-    graphics.clear();
+    graphics.clear(sf::Color(20, 20, 30));
+
 
     if (state == GameState::MENU) 
     {
+        // 传入窗口引用给draw
         graphics.drawMenuBackground();
-        menu.draw(graphics);
+        menu.draw(graphics.getWindow());
     } 
     else if (state == GameState::PLAYING) 
-{
+    {
     graphics.drawMap(map);
     graphics.drawTraps(trapManager, map);  
     graphics.drawPlayer(player);
     graphics.drawGameStatus(player, false);
-}
+    }
     else if (state == GameState::GAME_OVER) 
     {
         graphics.drawText(
@@ -176,6 +186,7 @@ void Game::render()
             CELL_SIZE,  // 左边距1个单元格
             CELL_SIZE / 2  // 顶部边框内（y坐标在迷宫上方）
         );
+        menu.setActive(true);
     } 
     else if (state == GameState::WIN) 
     {
@@ -184,6 +195,7 @@ void Game::render()
             CELL_SIZE, 
             CELL_SIZE / 2  // 顶部边框内
         );
+        menu.setActive(true);
     }
 
     graphics.display();

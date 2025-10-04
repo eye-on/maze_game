@@ -7,7 +7,8 @@
 #include "../core/TrapManager.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
-
+#include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 class Graphics 
 {
 private:
@@ -24,7 +25,7 @@ public:
     bool pollEvent(sf::Event& event);
 
     // 清屏
-    void clear();
+    void clear(const sf::Color& color);
 
     // 显示
     void display();

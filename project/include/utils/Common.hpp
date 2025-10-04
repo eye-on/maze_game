@@ -23,7 +23,7 @@ const sf::Color COLOR_WALL = sf::Color(100, 100, 100);   // 墙（灰色）
 const sf::Color COLOR_PATH = sf::Color::White;           // 通路（白色）
 const sf::Color COLOR_PLAYER = sf::Color::Red;           // 玩家（红色）
 const sf::Color COLOR_TRAP = sf::Color::Yellow;          // 陷阱（黄色）
-const sf::Color COLOR_TEXT = sf::Color::Black;           // 文字（黑色）
+const sf::Color COLOR_TEXT = sf::Color::White;           // 文字（白色）
 const float TRAP_ACTIVE_TIME = 5.0f;    // 陷阱激活状态持续时间
 const float TRAP_COOLDOWN_TIME = 3.0f;  // 陷阱冷却时间
 #endif // COMMON_HPP
