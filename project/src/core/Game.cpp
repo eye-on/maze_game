@@ -171,13 +171,19 @@ void Game::render()
 }
     else if (state == GameState::GAME_OVER) 
     {
-        graphics.drawMap(map);
-        graphics.drawText("Game Over! Press Enter to return to menu", 50, WINDOW_HEIGHT/2);
+        graphics.drawText(
+            "Game Over! Press Enter to return to menu", 
+            CELL_SIZE,  // 左边距1个单元格
+            CELL_SIZE / 2  // 顶部边框内（y坐标在迷宫上方）
+        );
     } 
     else if (state == GameState::WIN) 
     {
-        graphics.drawMap(map);
-        graphics.drawText("You Win! Press Enter to return to menu", 50, WINDOW_HEIGHT/2);
+        graphics.drawText(
+            "You Win! Press Enter to return to menu", 
+            CELL_SIZE, 
+            CELL_SIZE / 2  // 顶部边框内
+        );
     }
 
     graphics.display();

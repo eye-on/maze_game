@@ -8,11 +8,12 @@ enum class Direction { UP, DOWN, LEFT, RIGHT }; // 玩家移动方向
 enum class MapElement { WALL, PATH, PLAYER, TRAP, UNKNOWN }; // 地图元素类型
 
 // 游戏常量（可根据需要调整）
-const int CELL_SIZE = 40;         // 每个格子的像素大小
-const int MAP_WIDTH = 15;         // 地图宽度
-const int MAP_HEIGHT = 10;        // 地图高度
-const int WINDOW_WIDTH = MAP_WIDTH * CELL_SIZE;  // 窗口宽度
-const int WINDOW_HEIGHT = MAP_HEIGHT * CELL_SIZE; // 窗口高度
+const int MAP_WIDTH = 15;
+const int MAP_HEIGHT = 10;
+const int CELL_SIZE = 40;
+const int BORDER_SIZE = 1;  // 边框单元格数量（上下左右各1格）
+const int WINDOW_WIDTH = (MAP_WIDTH + 2 * BORDER_SIZE) * CELL_SIZE;  // 新增左右边框
+const int WINDOW_HEIGHT = (MAP_HEIGHT + 2 * BORDER_SIZE) * CELL_SIZE; // 新增上下边框
 const int PLAYER_MAX_HP = 100;    // 玩家初始生命值
 const int TRAP_DAMAGE = 20;       // 陷阱伤害
 const int TRAP_COUNT = 5;         // 初始陷阱数量

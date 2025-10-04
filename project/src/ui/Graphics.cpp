@@ -21,7 +21,7 @@ Graphics::Graphics() : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Maze 
         std::cerr << "- 显卡驱动问题或缺少显示权限\n";
         exit(EXIT_FAILURE); // 立即退出，避免后续操作无效窗口
     }
-
+    window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "迷宫游戏");
     //字体路径
     if (!font.loadFromFile("../assets/fonts/game_font.ttf")) 
     { 
@@ -45,12 +45,14 @@ void Graphics::display()
 
 void Graphics::drawMap(const Map& map) 
 {
+    const int offsetX = BORDER_SIZE * CELL_SIZE;
+    const int offsetY = BORDER_SIZE * CELL_SIZE;
     for (int y = 0; y < map.getHeight(); y++) 
     {
         for (int x = 0; x < map.getWidth(); x++) 
         {
             sf::RectangleShape cell(sf::Vector2f(CELL_SIZE, CELL_SIZE));
-            cell.setPosition(x * CELL_SIZE, y * CELL_SIZE);
+            cell.setPosition(x * CELL_SIZE + offsetX, y * CELL_SIZE + offsetY);
             
             // 根据地图元素设置颜色
             if (!map.isExplored(x, y)) 
@@ -78,7 +80,11 @@ void Graphics::drawMap(const Map& map)
     if (map.isExplored(map.getEndX(), map.getEndY())) 
     {
         sf::RectangleShape endMarker(sf::Vector2f(CELL_SIZE, CELL_SIZE));
-        endMarker.setPosition(map.getEndX() * CELL_SIZE, map.getEndY() * CELL_SIZE);
+        // 关键修正：终点位置 = 原有坐标 + 偏移量
+        endMarker.setPosition(
+            map.getEndX() * CELL_SIZE + offsetX,  // 加上X方向偏移
+            map.getEndY() * CELL_SIZE + offsetY   // 加上Y方向偏移
+        );
         endMarker.setFillColor(sf::Color::Green);
         window.draw(endMarker);
     }
@@ -86,25 +92,31 @@ void Graphics::drawMap(const Map& map)
 
 void Graphics::drawPlayer(const Player& player) 
 {
+    const int offsetX = BORDER_SIZE * CELL_SIZE;
+    const int offsetY = BORDER_SIZE * CELL_SIZE;
+
     sf::RectangleShape playerShape(sf::Vector2f(CELL_SIZE - 10, CELL_SIZE - 10));
     playerShape.setPosition(
-        player.getX() * CELL_SIZE + 5,  // +5居中
-        player.getY() * CELL_SIZE + 5
+        player.getX() * CELL_SIZE + offsetX + 5,  // +5是原有内边距，保持不变
+        player.getY() * CELL_SIZE + offsetY + 5
     );
     playerShape.setFillColor(COLOR_PLAYER);
     window.draw(playerShape);
 }
 
 void Graphics::drawTraps(const TrapManager& trapManager, const Map& map) 
-{  
+{
+    const int offsetX = BORDER_SIZE * CELL_SIZE;
+    const int offsetY = BORDER_SIZE * CELL_SIZE;
+
     for (const auto& trap : trapManager.getTraps()) 
     {
-        if (trap.isActive() && map.isExplored(trap.getX(), trap.getY())) // 只显示已探索区域的陷阱
-        {  
+        if (trap.isActive() && map.isExplored(trap.getX(), trap.getY())) 
+        {
             sf::RectangleShape trapShape(sf::Vector2f(CELL_SIZE - 10, CELL_SIZE - 10));
             trapShape.setPosition(
-                trap.getX() * CELL_SIZE + 5,
-                trap.getY() * CELL_SIZE + 5
+                trap.getX() * CELL_SIZE + offsetX + 5,
+                trap.getY() * CELL_SIZE + offsetY + 5
             );
             trapShape.setFillColor(COLOR_TRAP);
             window.draw(trapShape);
@@ -120,11 +132,17 @@ void Graphics::drawText(const std::string& text, int x, int y, int characterSize
     window.draw(sfText);
 }
 
-void Graphics::drawGameStatus(const Player& player, bool isWin) 
+void Graphics::drawGameStatus(const Player& player, bool isGameOver) 
 {
-    // 显示生命值
+    const int offsetY = BORDER_SIZE * CELL_SIZE;  // 边框像素数
     std::string hpText = "HP: " + std::to_string(player.getHP());
-    drawText(hpText, 10, WINDOW_HEIGHT - 30);
+    
+    // 绘制位置：底部边框（y坐标 = 迷宫高度 + 边框偏移，即窗口底部区域）
+    drawText(
+        hpText, 
+        CELL_SIZE,  // 左边距1个单元格
+        (MAP_HEIGHT + BORDER_SIZE) * CELL_SIZE + 10  // 底部边框内
+    );
 }
 
 void Graphics::drawMenuBackground() 
