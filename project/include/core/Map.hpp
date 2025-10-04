@@ -9,12 +9,16 @@ class Map
 {
 private:
     std::vector<std::vector<MapElement>> grid;  // 地图栅格数据
+    std::vector<std::vector<bool>> explored;    // 地图探索记录
     int width, height;                          // 地图尺寸
     int startX, startY;                         // 玩家起始位置
     int endX, endY;                             // 迷宫终点位置
 
 public:
     Map();
+
+    void revealArea(int centerX, int centerY, int radius);
+    bool isExplored(int x, int y) const;
 
     // 从文件加载地图（格式：0=通路,1=墙,S=起点,E=终点）
     bool loadFromFile(const std::string& filePath);

@@ -6,7 +6,7 @@
 #include "TrapManager.hpp"
 #include "../ui/Menu.hpp"
 #include "../ui/Graphics.hpp"
-
+#include <SFML/System/Clock.hpp> 
 // 游戏状态
 enum class GameState { MENU, PLAYING, GAME_OVER, WIN };
 
@@ -20,7 +20,11 @@ private:
     Menu menu;                // 菜单
     Graphics graphics;        // 图形渲染
     int currentMapIndex;      // 当前选中的地图索引（0=map1,1=map2）
-
+    bool wPressed = false;    // 想必人类都能看懂吧
+    bool sPressed = false;
+    bool aPressed = false;
+    bool dPressed = false;
+    sf::Clock gameClock;
 public:
     // 构造函数：初始化
     Game();

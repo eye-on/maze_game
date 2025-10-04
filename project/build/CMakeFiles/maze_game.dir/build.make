@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/owlage/homework2/maze_game
+CMAKE_SOURCE_DIR = /home/owlage/homework2/project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/owlage/homework2/maze_game/build
+CMAKE_BINARY_DIR = /home/owlage/homework2/project/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/maze_game.dir/depend.make
@@ -70,130 +70,130 @@ include CMakeFiles/maze_game.dir/progress.make
 include CMakeFiles/maze_game.dir/flags.make
 
 CMakeFiles/maze_game.dir/src/main.cpp.o: CMakeFiles/maze_game.dir/flags.make
-CMakeFiles/maze_game.dir/src/main.cpp.o: /home/owlage/homework2/maze_game/src/main.cpp
+CMakeFiles/maze_game.dir/src/main.cpp.o: /home/owlage/homework2/project/src/main.cpp
 CMakeFiles/maze_game.dir/src/main.cpp.o: CMakeFiles/maze_game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/maze_game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/maze_game.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/main.cpp.o -MF CMakeFiles/maze_game.dir/src/main.cpp.o.d -o CMakeFiles/maze_game.dir/src/main.cpp.o -c /home/owlage/homework2/maze_game/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/maze_game.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/main.cpp.o -MF CMakeFiles/maze_game.dir/src/main.cpp.o.d -o CMakeFiles/maze_game.dir/src/main.cpp.o -c /home/owlage/homework2/project/src/main.cpp
 
 CMakeFiles/maze_game.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/maze_game.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/maze_game/src/main.cpp > CMakeFiles/maze_game.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/project/src/main.cpp > CMakeFiles/maze_game.dir/src/main.cpp.i
 
 CMakeFiles/maze_game.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/maze_game.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/maze_game/src/main.cpp -o CMakeFiles/maze_game.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/project/src/main.cpp -o CMakeFiles/maze_game.dir/src/main.cpp.s
 
 CMakeFiles/maze_game.dir/src/core/Player.cpp.o: CMakeFiles/maze_game.dir/flags.make
-CMakeFiles/maze_game.dir/src/core/Player.cpp.o: /home/owlage/homework2/maze_game/src/core/Player.cpp
+CMakeFiles/maze_game.dir/src/core/Player.cpp.o: /home/owlage/homework2/project/src/core/Player.cpp
 CMakeFiles/maze_game.dir/src/core/Player.cpp.o: CMakeFiles/maze_game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/maze_game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/maze_game.dir/src/core/Player.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/core/Player.cpp.o -MF CMakeFiles/maze_game.dir/src/core/Player.cpp.o.d -o CMakeFiles/maze_game.dir/src/core/Player.cpp.o -c /home/owlage/homework2/maze_game/src/core/Player.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/maze_game.dir/src/core/Player.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/core/Player.cpp.o -MF CMakeFiles/maze_game.dir/src/core/Player.cpp.o.d -o CMakeFiles/maze_game.dir/src/core/Player.cpp.o -c /home/owlage/homework2/project/src/core/Player.cpp
 
 CMakeFiles/maze_game.dir/src/core/Player.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/maze_game.dir/src/core/Player.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/maze_game/src/core/Player.cpp > CMakeFiles/maze_game.dir/src/core/Player.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/project/src/core/Player.cpp > CMakeFiles/maze_game.dir/src/core/Player.cpp.i
 
 CMakeFiles/maze_game.dir/src/core/Player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/maze_game.dir/src/core/Player.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/maze_game/src/core/Player.cpp -o CMakeFiles/maze_game.dir/src/core/Player.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/project/src/core/Player.cpp -o CMakeFiles/maze_game.dir/src/core/Player.cpp.s
 
 CMakeFiles/maze_game.dir/src/core/Map.cpp.o: CMakeFiles/maze_game.dir/flags.make
-CMakeFiles/maze_game.dir/src/core/Map.cpp.o: /home/owlage/homework2/maze_game/src/core/Map.cpp
+CMakeFiles/maze_game.dir/src/core/Map.cpp.o: /home/owlage/homework2/project/src/core/Map.cpp
 CMakeFiles/maze_game.dir/src/core/Map.cpp.o: CMakeFiles/maze_game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/maze_game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/maze_game.dir/src/core/Map.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/core/Map.cpp.o -MF CMakeFiles/maze_game.dir/src/core/Map.cpp.o.d -o CMakeFiles/maze_game.dir/src/core/Map.cpp.o -c /home/owlage/homework2/maze_game/src/core/Map.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/maze_game.dir/src/core/Map.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/core/Map.cpp.o -MF CMakeFiles/maze_game.dir/src/core/Map.cpp.o.d -o CMakeFiles/maze_game.dir/src/core/Map.cpp.o -c /home/owlage/homework2/project/src/core/Map.cpp
 
 CMakeFiles/maze_game.dir/src/core/Map.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/maze_game.dir/src/core/Map.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/maze_game/src/core/Map.cpp > CMakeFiles/maze_game.dir/src/core/Map.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/project/src/core/Map.cpp > CMakeFiles/maze_game.dir/src/core/Map.cpp.i
 
 CMakeFiles/maze_game.dir/src/core/Map.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/maze_game.dir/src/core/Map.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/maze_game/src/core/Map.cpp -o CMakeFiles/maze_game.dir/src/core/Map.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/project/src/core/Map.cpp -o CMakeFiles/maze_game.dir/src/core/Map.cpp.s
 
 CMakeFiles/maze_game.dir/src/core/Trap.cpp.o: CMakeFiles/maze_game.dir/flags.make
-CMakeFiles/maze_game.dir/src/core/Trap.cpp.o: /home/owlage/homework2/maze_game/src/core/Trap.cpp
+CMakeFiles/maze_game.dir/src/core/Trap.cpp.o: /home/owlage/homework2/project/src/core/Trap.cpp
 CMakeFiles/maze_game.dir/src/core/Trap.cpp.o: CMakeFiles/maze_game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/maze_game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/maze_game.dir/src/core/Trap.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/core/Trap.cpp.o -MF CMakeFiles/maze_game.dir/src/core/Trap.cpp.o.d -o CMakeFiles/maze_game.dir/src/core/Trap.cpp.o -c /home/owlage/homework2/maze_game/src/core/Trap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/maze_game.dir/src/core/Trap.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/core/Trap.cpp.o -MF CMakeFiles/maze_game.dir/src/core/Trap.cpp.o.d -o CMakeFiles/maze_game.dir/src/core/Trap.cpp.o -c /home/owlage/homework2/project/src/core/Trap.cpp
 
 CMakeFiles/maze_game.dir/src/core/Trap.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/maze_game.dir/src/core/Trap.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/maze_game/src/core/Trap.cpp > CMakeFiles/maze_game.dir/src/core/Trap.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/project/src/core/Trap.cpp > CMakeFiles/maze_game.dir/src/core/Trap.cpp.i
 
 CMakeFiles/maze_game.dir/src/core/Trap.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/maze_game.dir/src/core/Trap.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/maze_game/src/core/Trap.cpp -o CMakeFiles/maze_game.dir/src/core/Trap.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/project/src/core/Trap.cpp -o CMakeFiles/maze_game.dir/src/core/Trap.cpp.s
 
 CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.o: CMakeFiles/maze_game.dir/flags.make
-CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.o: /home/owlage/homework2/maze_game/src/core/TrapManager.cpp
+CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.o: /home/owlage/homework2/project/src/core/TrapManager.cpp
 CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.o: CMakeFiles/maze_game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/maze_game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.o -MF CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.o.d -o CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.o -c /home/owlage/homework2/maze_game/src/core/TrapManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.o -MF CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.o.d -o CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.o -c /home/owlage/homework2/project/src/core/TrapManager.cpp
 
 CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/maze_game/src/core/TrapManager.cpp > CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/project/src/core/TrapManager.cpp > CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.i
 
 CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/maze_game/src/core/TrapManager.cpp -o CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/project/src/core/TrapManager.cpp -o CMakeFiles/maze_game.dir/src/core/TrapManager.cpp.s
 
 CMakeFiles/maze_game.dir/src/core/Game.cpp.o: CMakeFiles/maze_game.dir/flags.make
-CMakeFiles/maze_game.dir/src/core/Game.cpp.o: /home/owlage/homework2/maze_game/src/core/Game.cpp
+CMakeFiles/maze_game.dir/src/core/Game.cpp.o: /home/owlage/homework2/project/src/core/Game.cpp
 CMakeFiles/maze_game.dir/src/core/Game.cpp.o: CMakeFiles/maze_game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/maze_game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/maze_game.dir/src/core/Game.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/core/Game.cpp.o -MF CMakeFiles/maze_game.dir/src/core/Game.cpp.o.d -o CMakeFiles/maze_game.dir/src/core/Game.cpp.o -c /home/owlage/homework2/maze_game/src/core/Game.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/maze_game.dir/src/core/Game.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/core/Game.cpp.o -MF CMakeFiles/maze_game.dir/src/core/Game.cpp.o.d -o CMakeFiles/maze_game.dir/src/core/Game.cpp.o -c /home/owlage/homework2/project/src/core/Game.cpp
 
 CMakeFiles/maze_game.dir/src/core/Game.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/maze_game.dir/src/core/Game.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/maze_game/src/core/Game.cpp > CMakeFiles/maze_game.dir/src/core/Game.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/project/src/core/Game.cpp > CMakeFiles/maze_game.dir/src/core/Game.cpp.i
 
 CMakeFiles/maze_game.dir/src/core/Game.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/maze_game.dir/src/core/Game.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/maze_game/src/core/Game.cpp -o CMakeFiles/maze_game.dir/src/core/Game.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/project/src/core/Game.cpp -o CMakeFiles/maze_game.dir/src/core/Game.cpp.s
 
 CMakeFiles/maze_game.dir/src/ui/Menu.cpp.o: CMakeFiles/maze_game.dir/flags.make
-CMakeFiles/maze_game.dir/src/ui/Menu.cpp.o: /home/owlage/homework2/maze_game/src/ui/Menu.cpp
+CMakeFiles/maze_game.dir/src/ui/Menu.cpp.o: /home/owlage/homework2/project/src/ui/Menu.cpp
 CMakeFiles/maze_game.dir/src/ui/Menu.cpp.o: CMakeFiles/maze_game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/maze_game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/maze_game.dir/src/ui/Menu.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/ui/Menu.cpp.o -MF CMakeFiles/maze_game.dir/src/ui/Menu.cpp.o.d -o CMakeFiles/maze_game.dir/src/ui/Menu.cpp.o -c /home/owlage/homework2/maze_game/src/ui/Menu.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/maze_game.dir/src/ui/Menu.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/ui/Menu.cpp.o -MF CMakeFiles/maze_game.dir/src/ui/Menu.cpp.o.d -o CMakeFiles/maze_game.dir/src/ui/Menu.cpp.o -c /home/owlage/homework2/project/src/ui/Menu.cpp
 
 CMakeFiles/maze_game.dir/src/ui/Menu.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/maze_game.dir/src/ui/Menu.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/maze_game/src/ui/Menu.cpp > CMakeFiles/maze_game.dir/src/ui/Menu.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/project/src/ui/Menu.cpp > CMakeFiles/maze_game.dir/src/ui/Menu.cpp.i
 
 CMakeFiles/maze_game.dir/src/ui/Menu.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/maze_game.dir/src/ui/Menu.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/maze_game/src/ui/Menu.cpp -o CMakeFiles/maze_game.dir/src/ui/Menu.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/project/src/ui/Menu.cpp -o CMakeFiles/maze_game.dir/src/ui/Menu.cpp.s
 
 CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o: CMakeFiles/maze_game.dir/flags.make
-CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o: /home/owlage/homework2/maze_game/src/ui/Graphics.cpp
+CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o: /home/owlage/homework2/project/src/ui/Graphics.cpp
 CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o: CMakeFiles/maze_game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/maze_game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o -MF CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o.d -o CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o -c /home/owlage/homework2/maze_game/src/ui/Graphics.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o -MF CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o.d -o CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o -c /home/owlage/homework2/project/src/ui/Graphics.cpp
 
 CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/maze_game/src/ui/Graphics.cpp > CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/project/src/ui/Graphics.cpp > CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.i
 
 CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/maze_game/src/ui/Graphics.cpp -o CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/project/src/ui/Graphics.cpp -o CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.s
 
 CMakeFiles/maze_game.dir/src/utils/Common.cpp.o: CMakeFiles/maze_game.dir/flags.make
-CMakeFiles/maze_game.dir/src/utils/Common.cpp.o: /home/owlage/homework2/maze_game/src/utils/Common.cpp
+CMakeFiles/maze_game.dir/src/utils/Common.cpp.o: /home/owlage/homework2/project/src/utils/Common.cpp
 CMakeFiles/maze_game.dir/src/utils/Common.cpp.o: CMakeFiles/maze_game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/maze_game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/maze_game.dir/src/utils/Common.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/utils/Common.cpp.o -MF CMakeFiles/maze_game.dir/src/utils/Common.cpp.o.d -o CMakeFiles/maze_game.dir/src/utils/Common.cpp.o -c /home/owlage/homework2/maze_game/src/utils/Common.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/owlage/homework2/project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/maze_game.dir/src/utils/Common.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/maze_game.dir/src/utils/Common.cpp.o -MF CMakeFiles/maze_game.dir/src/utils/Common.cpp.o.d -o CMakeFiles/maze_game.dir/src/utils/Common.cpp.o -c /home/owlage/homework2/project/src/utils/Common.cpp
 
 CMakeFiles/maze_game.dir/src/utils/Common.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/maze_game.dir/src/utils/Common.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/maze_game/src/utils/Common.cpp > CMakeFiles/maze_game.dir/src/utils/Common.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/owlage/homework2/project/src/utils/Common.cpp > CMakeFiles/maze_game.dir/src/utils/Common.cpp.i
 
 CMakeFiles/maze_game.dir/src/utils/Common.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/maze_game.dir/src/utils/Common.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/maze_game/src/utils/Common.cpp -o CMakeFiles/maze_game.dir/src/utils/Common.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/owlage/homework2/project/src/utils/Common.cpp -o CMakeFiles/maze_game.dir/src/utils/Common.cpp.s
 
 # Object files for target maze_game
 maze_game_OBJECTS = \
@@ -224,9 +224,9 @@ maze_game: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1
 maze_game: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1
 maze_game: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
 maze_game: CMakeFiles/maze_game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/owlage/homework2/maze_game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable maze_game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/owlage/homework2/project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable maze_game"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/maze_game.dir/link.txt --verbose=$(VERBOSE)
-	/usr/bin/cmake -E copy_directory /home/owlage/homework2/maze_game/assets /home/owlage/homework2/maze_game/build/assets
+	/usr/bin/cmake -E copy_directory /home/owlage/homework2/project/assets /home/owlage/homework2/project/build/assets
 
 # Rule to build all files generated by this target.
 CMakeFiles/maze_game.dir/build: maze_game
@@ -237,6 +237,6 @@ CMakeFiles/maze_game.dir/clean:
 .PHONY : CMakeFiles/maze_game.dir/clean
 
 CMakeFiles/maze_game.dir/depend:
-	cd /home/owlage/homework2/maze_game/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/owlage/homework2/maze_game /home/owlage/homework2/maze_game /home/owlage/homework2/maze_game/build /home/owlage/homework2/maze_game/build /home/owlage/homework2/maze_game/build/CMakeFiles/maze_game.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/owlage/homework2/project/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/owlage/homework2/project /home/owlage/homework2/project /home/owlage/homework2/project/build /home/owlage/homework2/project/build /home/owlage/homework2/project/build/CMakeFiles/maze_game.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/maze_game.dir/depend
 

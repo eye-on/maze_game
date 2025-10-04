@@ -6,6 +6,7 @@ Game::Game()
     : state(GameState::MENU), 
       player(0, 0),  // 初始位置会在resetGame中更新
       currentMapIndex(0) 
+      
 {
     // 初始化图形和菜单
     if (!graphics.isWindowOpen()) 
@@ -13,6 +14,7 @@ Game::Game()
         std::cerr << "Failed to initialize graphics" << std::endl;
         exit(1);
     }
+    menu.setActive(true);
 }
 
 void Game::run() 
@@ -35,73 +37,116 @@ void Game::handleInput()
     {
         if (event.type == sf::Event::Closed) 
         {
-        // 错误：graphics.~Graphics(); 
-        graphics.getWindow().close();
+            graphics.getWindow().close();
+        } 
+        else if (event.type == sf::Event::KeyPressed) 
+        {
+            // 胜利/失败状态下按Enter切换到菜单
+            if ((state == GameState::GAME_OVER || state == GameState::WIN) &&  event.key.code == sf::Keyboard::Enter) 
+            {
+                // 切换到菜单前，先清空所有事件（避免残留按键事件）
+                while (graphics.pollEvent(event)); 
+                state = GameState::MENU;
+                // 激活菜单（触发忽略首次Enter的逻辑）
+                menu.setActive(true);
+            }
+            // 游戏中按ESC返回菜单
+            else if (state == GameState::PLAYING && event.key.code == sf::Keyboard::Escape) 
+            {
+                while (graphics.pollEvent(event));
+                state = GameState::MENU;
+                menu.setActive(true);
+            }
         }
     }
 
     if (state == GameState::MENU) 
     {
         int menuResult = menu.handleInput();
-        if (menuResult == 0) 
-        { // 开始游戏
+        if (menuResult == 0) // 开始游戏
+        { 
+            menu.setActive(false); // 退出菜单时关闭激活状态
             resetGame();
             state = GameState::PLAYING;
         } 
         else if (menuResult == 1) 
-        { 
-        graphics.getWindow().close(); 
+        {
+            graphics.getWindow().close();
         }
-        else if (menuResult >= 2) 
-        { // 选择地图（2=map1,3=map2）
+        else if (menuResult >= 2) // 选择地图（2=map1,3=map2）
+        { 
             currentMapIndex = menuResult - 2;
         }
     } 
     else if (state == GameState::PLAYING) 
     {
-        // 玩家移动
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) 
+        // 玩家移动 - 按键按下时只移动一次
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !wPressed) 
         {
             player.move(Direction::UP, map);
+            wPressed = true;
         } 
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) 
+        else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        {
+            wPressed = false;
+        }
+    
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && !sPressed) 
         {
             player.move(Direction::DOWN, map);
+            sPressed = true;
         } 
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) 
+        else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        {
+            sPressed = false;
+        }
+    
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && !aPressed) 
         {
             player.move(Direction::LEFT, map);
+            aPressed = true;
         } 
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) 
+        else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            aPressed = false;
+        }
+    
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !dPressed) 
         {
             player.move(Direction::RIGHT, map);
+            dPressed = true;
         } 
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
+        else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            dPressed = false;
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
         {
             state = GameState::MENU; // 退回菜单
-        }
-    } 
-    else if (state == GameState::GAME_OVER || state == GameState::WIN) 
-    {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) 
-        {
-            state = GameState::MENU; // 回到菜单
         }
     }
 }
 
 void Game::update() 
 {
-    // 检测陷阱碰撞
-    trapManager.checkCollisions(player);
+    // 计算当前帧的时间差（秒）
+    float deltaTime = gameClock.restart().asSeconds();
 
-    // 检测游戏结束（生命值为0）
+    // 更新陷阱状态
+    trapManager.update(deltaTime, player, map);
+
+    // 原有碰撞检测逻辑...
+    trapManager.checkCollisions(player);
+    
+    // 原有探索区域更新...
+    map.revealArea(player.getX(), player.getY(), 2);
+    
+    // 原有游戏结束检测...
     if (!player.isAlive()) 
     {
         state = GameState::GAME_OVER;
     }
-
-    // 检测胜利（到达终点）
     if (player.getX() == map.getEndX() && player.getY() == map.getEndY()) 
     {
         state = GameState::WIN;
@@ -118,12 +163,12 @@ void Game::render()
         menu.draw(graphics);
     } 
     else if (state == GameState::PLAYING) 
-    {
-        graphics.drawMap(map);
-        graphics.drawTraps(trapManager);
-        graphics.drawPlayer(player);
-        graphics.drawGameStatus(player, false);
-    } 
+{
+    graphics.drawMap(map);
+    graphics.drawTraps(trapManager, map);  
+    graphics.drawPlayer(player);
+    graphics.drawGameStatus(player, false);
+}
     else if (state == GameState::GAME_OVER) 
     {
         graphics.drawMap(map);

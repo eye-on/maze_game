@@ -6,21 +6,50 @@ Menu::Menu() : options({"Start Game", "Exit", "Map 1", "Map 2"}), selectedIndex(
 
 int Menu::handleInput() 
 {
+    // 菜单未激活时不处理任何输入
+    if (!isActive) 
+    {
+        return -1; 
+    }
     // 上下键切换选项
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && selectedIndex > 0) 
     {
         selectedIndex--;
-        // 等待按键释放，避免快速切换
-        while (sf::Keyboard::isKeyPressed(sf::Keyboard::Up));
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && selectedIndex < options.size() - 1) 
+        while (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)); // 等待释放
+        return -1;
+    } 
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && selectedIndex < options.size() - 1) 
     {
         selectedIndex++;
-        while (sf::Keyboard::isKeyPressed(sf::Keyboard::Down));
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) 
+        while (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)); // 等待释放
+        return -1;
+    } 
+    // 处理Enter键（核心修复）
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) 
     {
-        return selectedIndex; // 回车返回选中的选项索引
+        // 如果是刚进入菜单，忽略第一次Enter
+        if (ignoreFirstEnter) 
+        {
+            // 等待Enter释放后，才允许后续输入
+            while (sf::Keyboard::isKeyPressed(sf::Keyboard::Return));
+            ignoreFirstEnter = false;
+            return -1;
+        }
+        // 正常情况：等待释放后返回选中项
+        while (sf::Keyboard::isKeyPressed(sf::Keyboard::Return));
+        return selectedIndex;
     }
-    return -1; // 未选择
+    return -1;
+}
+//设置菜单激活状态
+void Menu::setActive(bool active) 
+{
+    isActive = active;
+    if (active) 
+    {
+        // 刚激活时需要忽略一次Enter，防止状态切换带来的残留输入
+        ignoreFirstEnter = true;
+    }
 }
 
 void Menu::draw(Graphics& graphics) 

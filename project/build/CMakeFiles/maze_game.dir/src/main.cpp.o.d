@@ -1,8 +1,8 @@
 CMakeFiles/maze_game.dir/src/main.cpp.o: \
- /home/owlage/homework2/maze_game/src/main.cpp /usr/include/stdc-predef.h \
- /home/owlage/homework2/maze_game/src/../include/core/Game.hpp \
- /home/owlage/homework2/maze_game/src/../include/core/Player.hpp \
- /home/owlage/homework2/maze_game/src/../include/core/../utils/Common.hpp \
+ /home/owlage/homework2/project/src/main.cpp /usr/include/stdc-predef.h \
+ /home/owlage/homework2/project/src/../include/core/Game.hpp \
+ /home/owlage/homework2/project/src/../include/core/Player.hpp \
+ /home/owlage/homework2/project/src/../include/core/../utils/Common.hpp \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
@@ -231,12 +231,12 @@ CMakeFiles/maze_game.dir/src/main.cpp.o: \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
- /home/owlage/homework2/maze_game/src/../include/core/Map.hpp \
- /home/owlage/homework2/maze_game/src/../include/core/TrapManager.hpp \
- /home/owlage/homework2/maze_game/src/../include/core/Trap.hpp \
- /home/owlage/homework2/maze_game/src/../include/core/../ui/Menu.hpp \
- /home/owlage/homework2/maze_game/src/../include/core/../ui/../utils/Common.hpp \
- /home/owlage/homework2/maze_game/src/../include/core/../ui/Graphics.hpp \
- /home/owlage/homework2/maze_game/src/../include/core/../ui/../core/Player.hpp \
- /home/owlage/homework2/maze_game/src/../include/core/../ui/../core/Map.hpp \
- /home/owlage/homework2/maze_game/src/../include/core/../ui/../core/TrapManager.hpp
+ /home/owlage/homework2/project/src/../include/core/Map.hpp \
+ /home/owlage/homework2/project/src/../include/core/TrapManager.hpp \
+ /home/owlage/homework2/project/src/../include/core/Trap.hpp \
+ /home/owlage/homework2/project/src/../include/core/../ui/Menu.hpp \
+ /home/owlage/homework2/project/src/../include/core/../ui/../utils/Common.hpp \
+ /home/owlage/homework2/project/src/../include/core/../ui/Graphics.hpp \
+ /home/owlage/homework2/project/src/../include/core/../ui/../core/Player.hpp \
+ /home/owlage/homework2/project/src/../include/core/../ui/../core/Map.hpp \
+ /home/owlage/homework2/project/src/../include/core/../ui/../core/TrapManager.hpp

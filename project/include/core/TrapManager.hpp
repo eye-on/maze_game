@@ -10,7 +10,7 @@ class TrapManager
 {
 private:
     std::vector<Trap> traps;  // 陷阱列表
-
+    bool findValidPosition(int& x, int& y, const Player& player, const Map& map);
 public:
     TrapManager() = default;
 
@@ -20,6 +20,9 @@ public:
     // 检测玩家是否碰撞陷阱，处理伤害
     void checkCollisions(Player& player);
 
+     // 更新所有陷阱状态（每帧调用）
+    void update(float deltaTime, const Player& player, const Map& map);
+    
     // Getter
     const std::vector<Trap>& getTraps() const { return traps; }
 };

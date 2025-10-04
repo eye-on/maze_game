@@ -12,7 +12,8 @@ class Menu
 private:
     std::vector<std::string> options;  // 菜单选项
     int selectedIndex;                 // 当前选中的选项索引
-
+    bool isActive = false;
+    bool ignoreFirstEnter = false;
 public:
     Menu();
 
@@ -21,7 +22,8 @@ public:
 
     // 绘制菜单（通过Graphics）
     void draw(Graphics& graphics);
-
+    // 设置激活状态
+    void setActive(bool active);
     // Getter
     int getSelectedMap() const { return selectedIndex - 2; } // 地图选项从索引2开始
 };

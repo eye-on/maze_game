@@ -36,7 +36,7 @@ public:
     void drawPlayer(const Player& player);
 
     // 绘制陷阱
-    void drawTraps(const TrapManager& trapManager);
+    void drawTraps(const TrapManager& trapManager, const Map& map);
 
     // 鞋子
     void drawText(const std::string& text, int x, int y, int characterSize = 24);

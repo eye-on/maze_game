@@ -1,8 +1,8 @@
 CMakeFiles/maze_game.dir/src/core/Player.cpp.o: \
- /home/owlage/homework2/maze_game/src/core/Player.cpp \
+ /home/owlage/homework2/project/src/core/Player.cpp \
  /usr/include/stdc-predef.h \
- /home/owlage/homework2/maze_game/src/core/../../include/core/Player.hpp \
- /home/owlage/homework2/maze_game/src/core/../../include/core/../utils/Common.hpp \
+ /home/owlage/homework2/project/src/core/../../include/core/Player.hpp \
+ /home/owlage/homework2/project/src/core/../../include/core/../utils/Common.hpp \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
@@ -231,4 +231,4 @@ CMakeFiles/maze_game.dir/src/core/Player.cpp.o: \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
- /home/owlage/homework2/maze_game/src/core/../../include/core/Map.hpp
+ /home/owlage/homework2/project/src/core/../../include/core/Map.hpp

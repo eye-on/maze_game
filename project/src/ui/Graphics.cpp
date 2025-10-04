@@ -53,11 +53,18 @@ void Graphics::drawMap(const Map& map)
             cell.setPosition(x * CELL_SIZE, y * CELL_SIZE);
             
             // 根据地图元素设置颜色
-            switch (map.getElement(x, y)) 
+            if (!map.isExplored(x, y)) 
             {
-                case MapElement::WALL: cell.setFillColor(COLOR_WALL); break;
-                case MapElement::PATH: cell.setFillColor(COLOR_PATH); break;
-                default: break;
+                cell.setFillColor(sf::Color::Black);  // 未知区域为黑色
+            } 
+            else 
+            {
+                switch (map.getElement(x, y)) 
+                {
+                    case MapElement::WALL: cell.setFillColor(COLOR_WALL); break;
+                    case MapElement::PATH: cell.setFillColor(COLOR_PATH); break;
+                    default: break;
+                }
             }
 
             // 绘制格子边框
@@ -68,10 +75,13 @@ void Graphics::drawMap(const Map& map)
     }
 
     // 绘制终点（绿色方块）
-    sf::RectangleShape endMarker(sf::Vector2f(CELL_SIZE, CELL_SIZE));
-    endMarker.setPosition(map.getEndX() * CELL_SIZE, map.getEndY() * CELL_SIZE);
-    endMarker.setFillColor(sf::Color::Green);
-    window.draw(endMarker);
+    if (map.isExplored(map.getEndX(), map.getEndY())) 
+    {
+        sf::RectangleShape endMarker(sf::Vector2f(CELL_SIZE, CELL_SIZE));
+        endMarker.setPosition(map.getEndX() * CELL_SIZE, map.getEndY() * CELL_SIZE);
+        endMarker.setFillColor(sf::Color::Green);
+        window.draw(endMarker);
+    }
 }
 
 void Graphics::drawPlayer(const Player& player) 
@@ -85,12 +95,12 @@ void Graphics::drawPlayer(const Player& player)
     window.draw(playerShape);
 }
 
-void Graphics::drawTraps(const TrapManager& trapManager) 
-{
+void Graphics::drawTraps(const TrapManager& trapManager, const Map& map) 
+{  
     for (const auto& trap : trapManager.getTraps()) 
     {
-        if (trap.isActive()) // 只绘制激活的陷阱
-        { 
+        if (trap.isActive() && map.isExplored(trap.getX(), trap.getY())) // 只显示已探索区域的陷阱
+        {  
             sf::RectangleShape trapShape(sf::Vector2f(CELL_SIZE - 10, CELL_SIZE - 10));
             trapShape.setPosition(
                 trap.getX() * CELL_SIZE + 5,

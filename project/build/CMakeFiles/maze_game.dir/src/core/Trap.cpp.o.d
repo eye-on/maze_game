@@ -1,8 +1,8 @@
 CMakeFiles/maze_game.dir/src/core/Trap.cpp.o: \
- /home/owlage/homework2/maze_game/src/core/Trap.cpp \
+ /home/owlage/homework2/project/src/core/Trap.cpp \
  /usr/include/stdc-predef.h \
- /home/owlage/homework2/maze_game/src/core/../../include/core/Trap.hpp \
- /home/owlage/homework2/maze_game/src/core/../../include/core/../utils/Common.hpp \
+ /home/owlage/homework2/project/src/core/../../include/core/Trap.hpp \
+ /home/owlage/homework2/project/src/core/../../include/core/../utils/Common.hpp \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \

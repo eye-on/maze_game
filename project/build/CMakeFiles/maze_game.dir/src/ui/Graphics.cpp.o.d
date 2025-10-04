@@ -1,8 +1,8 @@
 CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o: \
- /home/owlage/homework2/maze_game/src/ui/Graphics.cpp \
+ /home/owlage/homework2/project/src/ui/Graphics.cpp \
  /usr/include/stdc-predef.h \
- /home/owlage/homework2/maze_game/src/ui/../../include/ui/Graphics.hpp \
- /home/owlage/homework2/maze_game/src/ui/../../include/ui/../utils/Common.hpp \
+ /home/owlage/homework2/project/src/ui/../../include/ui/Graphics.hpp \
+ /home/owlage/homework2/project/src/ui/../../include/ui/../utils/Common.hpp \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
@@ -231,12 +231,12 @@ CMakeFiles/maze_game.dir/src/ui/Graphics.cpp.o: \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
- /home/owlage/homework2/maze_game/src/ui/../../include/ui/../core/Player.hpp \
- /home/owlage/homework2/maze_game/src/ui/../../include/ui/../core/../utils/Common.hpp \
- /home/owlage/homework2/maze_game/src/ui/../../include/ui/../core/Map.hpp \
- /home/owlage/homework2/maze_game/src/ui/../../include/ui/../core/TrapManager.hpp \
- /home/owlage/homework2/maze_game/src/ui/../../include/ui/../core/Trap.hpp \
- /home/owlage/homework2/maze_game/src/ui/../../include/ui/../core/Player.hpp \
- /home/owlage/homework2/maze_game/src/ui/../../include/ui/../core/Map.hpp \
+ /home/owlage/homework2/project/src/ui/../../include/ui/../core/Player.hpp \
+ /home/owlage/homework2/project/src/ui/../../include/ui/../core/../utils/Common.hpp \
+ /home/owlage/homework2/project/src/ui/../../include/ui/../core/Map.hpp \
+ /home/owlage/homework2/project/src/ui/../../include/ui/../core/TrapManager.hpp \
+ /home/owlage/homework2/project/src/ui/../../include/ui/../core/Trap.hpp \
+ /home/owlage/homework2/project/src/ui/../../include/ui/../core/Player.hpp \
+ /home/owlage/homework2/project/src/ui/../../include/ui/../core/Map.hpp \
  /usr/include/c++/13/iostream /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc

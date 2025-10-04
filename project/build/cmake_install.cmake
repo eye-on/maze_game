@@ -1,4 +1,4 @@
-# Install script for directory: /home/owlage/homework2/maze_game
+# Install script for directory: /home/owlage/homework2/project
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/owlage/homework2/maze_game/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/owlage/homework2/project/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
