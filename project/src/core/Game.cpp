@@ -15,6 +15,7 @@ Game::Game()
         exit(1);
     }
     menu.setActive(true);
+    autoMoveClock.restart();
 }
 
 void Game::run() 
@@ -41,6 +42,10 @@ void Game::handleInput()
         } 
         else if (event.type == sf::Event::KeyPressed) 
         {
+            if (state == GameState::PLAYING && event.key.code == sf::Keyboard::F) 
+            {
+                isAutoMode = !isAutoMode;
+            }
             // 胜利/失败状态下按Enter切换到菜单
             if ((state == GameState::GAME_OVER || state == GameState::WIN) &&  event.key.code == sf::Keyboard::Enter) 
             {
@@ -133,6 +138,9 @@ void Game::handleInput()
         {
             state = GameState::MENU; // 退回菜单
         }
+        if (isAutoMode) {
+            wPressed = sPressed = aPressed = dPressed = false;
+        }
     }
 }
 
@@ -141,6 +149,13 @@ void Game::update()
     // 计算当前帧的时间差（秒）
     float deltaTime = gameClock.restart().asSeconds();
 
+    // 自动模式：每0.3秒移动一次（控制速度）
+    if (isAutoMode && autoMoveClock.getElapsedTime().asSeconds() > 0.3f) {
+        Direction dir = autoController.decideNextMove(player, map, trapManager);
+        player.move(dir, map);
+        autoMoveClock.restart();
+    }
+    
     // 更新陷阱状态
     trapManager.update(deltaTime, player, map);
 
@@ -174,10 +189,19 @@ void Game::render()
     } 
     else if (state == GameState::PLAYING) 
     {
-    graphics.drawMap(map);
-    graphics.drawTraps(trapManager, map);  
-    graphics.drawPlayer(player);
-    graphics.drawGameStatus(player, false);
+        graphics.drawMap(map);
+        graphics.drawTraps(trapManager, map);  
+        graphics.drawPlayer(player);
+        graphics.drawGameStatus(player, false);
+
+        if (isAutoMode) 
+        {
+            graphics.drawText("Auto Mode: ON (F to exit)", CELL_SIZE, CELL_SIZE, 20);
+        } 
+        else 
+        {
+            graphics.drawText("Auto Mode: OFF (F to enter)", CELL_SIZE, CELL_SIZE, 20);
+        }
     }
     else if (state == GameState::GAME_OVER) 
     {

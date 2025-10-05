@@ -4,6 +4,7 @@
 #include "Player.hpp"
 #include "Map.hpp"
 #include "TrapManager.hpp"
+#include "AutoController.hpp"
 #include "../ui/Menu.hpp"
 #include "../ui/Graphics.hpp"
 #include <SFML/System/Clock.hpp> 
@@ -24,6 +25,9 @@ private:
     bool sPressed = false;
     bool aPressed = false;
     bool dPressed = false;
+    bool isAutoMode = false;
+    AutoController autoController; 
+    sf::Clock autoMoveClock;
     sf::Clock gameClock;
 public:
     // 构造函数：初始化
