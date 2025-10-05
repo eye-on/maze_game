@@ -16,7 +16,7 @@ private:
 
 public:
     Map();
-
+    void setSize(int w, int h) { width = w; height = h; }
     void revealArea(int centerX, int centerY, int radius);
     bool isExplored(int x, int y) const;
 

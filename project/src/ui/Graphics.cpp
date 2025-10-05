@@ -1,6 +1,13 @@
 #include "../../include/ui/Graphics.hpp"
 #include <iostream>
 
+std::pair<int, int> Graphics::getMapOffset(const Map& map) const {
+    int mapWidth = map.getWidth() * CELL_SIZE;
+    int mapHeight = map.getHeight() * CELL_SIZE;
+    int offsetX = (WINDOW_WIDTH - mapWidth) / 2;
+    int offsetY = (WINDOW_HEIGHT - mapHeight) / 2;
+    return {offsetX, offsetY};
+}
 // 为了在Menu中绘制矩形，添加draw重载（需要在Graphics.h中声明）
 void Graphics::draw(const sf::Shape& shape) 
 {
@@ -45,8 +52,11 @@ void Graphics::display()
 
 void Graphics::drawMap(const Map& map) 
 {
-    const int offsetX = BORDER_SIZE * CELL_SIZE;
-    const int offsetY = BORDER_SIZE * CELL_SIZE;
+    int mapWidth = map.getWidth() * CELL_SIZE;
+    int mapHeight = map.getHeight() * CELL_SIZE;
+    int offsetX = (WINDOW_WIDTH - mapWidth) / 2;
+    int offsetY = (WINDOW_HEIGHT - mapHeight) / 2;
+    
     for (int y = 0; y < map.getHeight(); y++) 
     {
         for (int x = 0; x < map.getWidth(); x++) 
@@ -90,14 +100,13 @@ void Graphics::drawMap(const Map& map)
     }
 }
 
-void Graphics::drawPlayer(const Player& player) 
-{
-    const int offsetX = BORDER_SIZE * CELL_SIZE;
-    const int offsetY = BORDER_SIZE * CELL_SIZE;
-
+void Graphics::drawPlayer(const Player& player, const Map& map) 
+{  
+    auto [offsetX, offsetY] = getMapOffset(map);  // 统一偏移
+    
     sf::RectangleShape playerShape(sf::Vector2f(CELL_SIZE - 10, CELL_SIZE - 10));
     playerShape.setPosition(
-        player.getX() * CELL_SIZE + offsetX + 5,  // +5是原有内边距，保持不变
+        player.getX() * CELL_SIZE + offsetX + 5,  // 基于地图居中偏移
         player.getY() * CELL_SIZE + offsetY + 5
     );
     playerShape.setFillColor(COLOR_PLAYER);
@@ -106,16 +115,15 @@ void Graphics::drawPlayer(const Player& player)
 
 void Graphics::drawTraps(const TrapManager& trapManager, const Map& map) 
 {
-    const int offsetX = BORDER_SIZE * CELL_SIZE;
-    const int offsetY = BORDER_SIZE * CELL_SIZE;
-
+    auto [offsetX, offsetY] = getMapOffset(map);  // 统一偏移
+    
     for (const auto& trap : trapManager.getTraps()) 
     {
         if (trap.isActive() && map.isExplored(trap.getX(), trap.getY())) 
         {
             sf::RectangleShape trapShape(sf::Vector2f(CELL_SIZE - 10, CELL_SIZE - 10));
             trapShape.setPosition(
-                trap.getX() * CELL_SIZE + offsetX + 5,
+                trap.getX() * CELL_SIZE + offsetX + 5,  // 基于地图居中偏移
                 trap.getY() * CELL_SIZE + offsetY + 5
             );
             trapShape.setFillColor(COLOR_TRAP);
@@ -132,17 +140,34 @@ void Graphics::drawText(const std::string& text, int x, int y, int characterSize
     window.draw(sfText);
 }
 
-void Graphics::drawGameStatus(const Player& player, bool isGameOver) 
+void Graphics::drawGameStatus(const Player& player, const Map& map, bool isGameOver) 
 {
-    const int offsetY = BORDER_SIZE * CELL_SIZE;  // 边框像素数
+    const int marginX = 20;   // 左边缘距离
+    const int marginY = 20;   // 下边缘距离（从窗口底部往上20像素）
     std::string hpText = "HP: " + std::to_string(player.getHP());
     
-    // 绘制位置：底部边框（y坐标 = 迷宫高度 + 边框偏移，即窗口底部区域）
+    // 计算底部Y坐标：窗口高度 - 文字高度 - 下边缘距
+    
+    int statusY = WINDOW_HEIGHT - 30 - marginY;
+    
+    // 绘制血量（底部左侧）
     drawText(
         hpText, 
-        CELL_SIZE,  // 左边距1个单元格
-        (MAP_HEIGHT + BORDER_SIZE) * CELL_SIZE + 10  // 底部边框内
+        marginX,    // 左边距20
+        statusY     // 底部上移20
     );
+
+    // 游戏结束文字：底部居中
+    if (isGameOver) 
+    {
+        sf::Text gameOverText("Game Over!", font, 24);
+        sf::FloatRect textRect = gameOverText.getLocalBounds();
+        drawText(
+            "Game Over!",
+            (WINDOW_WIDTH - textRect.width) / 2,  // 水平居中
+            statusY                               // 与血量同高度
+        );
+    }
 }
 
 void Graphics::drawMenuBackground() 

@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 
-Map::Map() : width(MAP_WIDTH), height(MAP_HEIGHT), startX(1), startY(1), endX(MAP_WIDTH-2), endY(MAP_HEIGHT-2) 
+Map::Map() : width(0), height(0), startX(1), startY(1), endX(0), endY(0) 
 {
     // 初始化探索状态为未探索
     explored.resize(height, std::vector<bool>(width, false));
@@ -19,15 +19,15 @@ bool Map::loadFromFile(const std::string& filePath)
     }
 
     grid.clear();
-    explored.clear();  // 清空探索状态
-    explored.resize(height, std::vector<bool>(width, false));  // 二度初始化
+    explored.clear();
     std::string line;
     int y = 0;
 
-    while (std::getline(file, line) && y < height) 
+    // 读取所有行，不限制数量
+    while (std::getline(file, line)) 
     {
         std::vector<MapElement> row;
-        for (int x = 0; x < line.size() && x < width; x++) 
+        for (int x = 0; x < line.size(); x++) 
         {
             char c = line[x];
             if (c == '1') 
@@ -39,13 +39,13 @@ bool Map::loadFromFile(const std::string& filePath)
                 row.push_back(MapElement::PATH);
             } 
             else if (c == 'S') 
-            {  // 起点
+            {
                 row.push_back(MapElement::PATH);
                 startX = x;
                 startY = y;
             } 
             else if (c == 'E') 
-            {  // 终点
+            {
                 row.push_back(MapElement::PATH);
                 endX = x;
                 endY = y;
@@ -55,6 +55,16 @@ bool Map::loadFromFile(const std::string& filePath)
         y++;
     }
 
+    // 设置实际地图尺寸
+    height = grid.size();
+    if (height > 0) 
+    {
+        width = grid[0].size();
+    }
+    
+    // 初始化探索状态
+    explored.resize(height, std::vector<bool>(width, false));
+    
     file.close();
     return true;
 }

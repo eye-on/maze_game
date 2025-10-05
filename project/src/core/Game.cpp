@@ -14,6 +14,7 @@ Game::Game()
         std::cerr << "Failed to initialize graphics" << std::endl;
         exit(1);
     }
+    menu.loadMapList("assets/maps/");
     menu.setActive(true);
     autoMoveClock.restart();
 }
@@ -83,12 +84,17 @@ void Game::handleInput()
     {
         // 传入窗口引用给handleInput
         int menuResult = menu.handleInput(graphics.getWindow());
-        if (menuResult == 0) { 
+        if (menuResult == 1) 
+        { 
+            graphics.getWindow().close();
+        }  
+        else if (menuResult >= 100) 
+        {
+            // 地图选择结果
+            currentMapIndex = menuResult - 100;
             menu.setActive(false);
             resetGame();
             state = GameState::PLAYING;
-        } else if (menuResult == 1) { 
-            graphics.getWindow().close();
         }
     } 
     else if (state == GameState::PLAYING) 
@@ -191,8 +197,8 @@ void Game::render()
     {
         graphics.drawMap(map);
         graphics.drawTraps(trapManager, map);  
-        graphics.drawPlayer(player);
-        graphics.drawGameStatus(player, false);
+        graphics.drawPlayer(player, map);
+        graphics.drawGameStatus(player, map,false);
 
         if (isAutoMode) 
         {
@@ -228,11 +234,18 @@ void Game::render()
 void Game::resetGame() 
 {
     // 根据currentMapIndex加载对应地图文件
-    std::string mapPath = (currentMapIndex == 0) ? "assets/maps/map1.txt" : "assets/maps/map2.txt";
+    std::vector<std::string> mapFiles = menu.getMapOptions();
+    if (currentMapIndex < 0 || currentMapIndex >= mapFiles.size()) 
+    {
+        std::cerr << "Invalid map index" << std::endl;
+        return;
+    }
+    
+    std::string mapPath = "assets/maps/" + mapFiles[currentMapIndex];
     if (!map.loadFromFile(mapPath)) 
     {
         std::cerr << "Failed to load map: " << mapPath << std::endl;
-        state = GameState::MENU; // 加载失败返回菜单
+        state = GameState::MENU;
         return;
     }
     // 初始化玩家（使用地图的起点）

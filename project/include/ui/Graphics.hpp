@@ -34,7 +34,7 @@ public:
     void drawMap(const Map& map);
 
     // 绘制玩家
-    void drawPlayer(const Player& player);
+    void drawPlayer(const Player& player,const Map&map);
 
     // 绘制陷阱
     void drawTraps(const TrapManager& trapManager, const Map& map);
@@ -43,11 +43,11 @@ public:
     void drawText(const std::string& text, int x, int y, int characterSize = 24);
 
     // 绘制游戏状态（生命值、胜利/失败提示）
-    void drawGameStatus(const Player& player, bool isWin);
+    void drawGameStatus(const Player& player, const Map& map, bool isWin);
 
     // 绘制菜单背景和边框
     void drawMenuBackground();
-
+    std::pair<int, int> getMapOffset(const Map& map) const;
     sf::RenderWindow& getWindow() { return window; }
 };
 

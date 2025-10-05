@@ -6,7 +6,7 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 class Graphics; 
-
+enum class MenuState { MAIN, MAP_SELECT };
 class Menu 
 {
 private:
@@ -14,8 +14,9 @@ private:
     bool downPressed = false;     // 下方向键按下事件标志
     bool returnPressed = false;   // 回车键按下事件标志
     bool leftMousePressed = false;// 鼠标左键按下事件标志
-    // 仅保留2个核心选项
-    std::vector<std::string> options = {"Start Game", "Exit"};
+    MenuState currentState = MenuState::MAIN;
+    std::vector<std::string> mainOptions = {"Start Game", "Exit"};
+    std::vector<std::string> mapOptions;
     int selectedIndex = 0;  // 0=Start, 1=Exit
     bool isActive = false;
     bool ignoreFirstInput = false;
@@ -35,10 +36,15 @@ private:
 
 public:
     Menu();
+    void loadMapList(const std::string& directory);
     int handleInput(const sf::RenderWindow& window);
     void draw(sf::RenderWindow& window) const;  // 绘制按钮菜单
     void setActive(bool active);
     void handleEvent(const sf::Event& event);
+    const std::vector<std::string>& getMapOptions() const 
+    {
+        return mapOptions;
+    }
 };
 
 #endif // MENU_HPP

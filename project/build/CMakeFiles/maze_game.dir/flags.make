@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/owlage/homework2/project/include -I/home/owlage/homework2/project/include/core -I/home/owlage/homework2/project/include/ui -I/home/owlage/homework2/project/include/utils
 
-CXX_FLAGS = -std=gnu++11
+CXX_FLAGS = -std=gnu++17
 
