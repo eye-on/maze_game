@@ -35,7 +35,8 @@ private:
     float heuristic(int x1, int y1, int x2, int y2) {
         return std::abs(x1 - x2) + std::abs(y1 - y2);
     }
-
+    //回头惩罚
+    const float BACKTRACK_PENALTY = 1.5f;
     // 检查位置是否安全（合法且无激活陷阱）
     bool isSafe(int x, int y, const Map& map, const TrapManager& trapManager) {
         if (!map.isPositionValid(x, y)) return false; // 检查是否是通路
@@ -93,7 +94,8 @@ public:
             openSet.pop();
 
             // 到达终点
-            if (currentNode->x == targetX && currentNode->y == targetY) {
+            if (currentNode->x == targetX && currentNode->y == targetY) 
+            {
                 auto path = reconstructPath(currentNode);
                 return path.empty() ? Direction::UP : path[0];
             }
@@ -104,33 +106,45 @@ public:
             for (const auto& dir : directions) {
                 int newX = currentNode->x + dir.first;
                 int newY = currentNode->y + dir.second;
-
+                float moveCost = 1.0f;
                 if (!isSafe(newX, newY, map, trapManager)) continue;
                 if (closedSet.count({newX, newY})) continue;
-
-                float newG = currentNode->g_cost + 1;
+                bool isBacktrack = closedSet.count({newX, newY}) && 
+                      !(currentNode->parent && 
+                        currentNode->parent->x == newX && 
+                        currentNode->parent->y == newY);
+                if (isBacktrack) 
+                {
+                    moveCost *= BACKTRACK_PENALTY;  // 乘以惩罚系数
+                }
+                float newG = currentNode->g_cost + moveCost;
                 std::shared_ptr<Node> neighborNode = nullptr;
 
                 // 检查是否在openSet中
                 bool found = false;
                 auto tempQueue = openSet;
-                while (!tempQueue.empty()) {
+                while (!tempQueue.empty()) 
+                {
                     auto node = tempQueue.top();
                     tempQueue.pop();
-                    if (node->x == newX && node->y == newY) {
+                    if (node->x == newX && node->y == newY) 
+                    {
                         neighborNode = node;
                         found = true;
                         break;
                     }
                 }
 
-                if (!found) {
+                if (!found) 
+                {
                     neighborNode = std::make_shared<Node>(newX, newY);
                     neighborNode->parent = currentNode;
                     neighborNode->g_cost = newG;
                     neighborNode->h_cost = heuristic(newX, newY, targetX, targetY);
                     openSet.push(neighborNode);
-                } else if (newG < neighborNode->g_cost) {
+                } 
+                else if (newG < neighborNode->g_cost) 
+                {
                     neighborNode->parent = currentNode;
                     neighborNode->g_cost = newG;
                 }

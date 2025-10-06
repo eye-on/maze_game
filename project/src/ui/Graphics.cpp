@@ -2,8 +2,8 @@
 #include <iostream>
 
 std::pair<int, int> Graphics::getMapOffset(const Map& map) const {
-    int mapWidth = map.getWidth() * CELL_SIZE;
-    int mapHeight = map.getHeight() * CELL_SIZE;
+    int mapWidth = map.getWidth() * cellSize;
+    int mapHeight = map.getHeight() * cellSize;
     int offsetX = (WINDOW_WIDTH - mapWidth) / 2;
     int offsetY = (WINDOW_HEIGHT - mapHeight) / 2;
     return {offsetX, offsetY};
@@ -14,7 +14,7 @@ void Graphics::draw(const sf::Shape& shape)
     window.draw(shape);
 }
 
-Graphics::Graphics() : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Maze Game") 
+Graphics::Graphics() : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Maze Game"),cellSize(40) 
 {
     // 1. 强制禁用垂直同步（理由暂时未知）
     window.setVerticalSyncEnabled(false);
@@ -35,6 +35,24 @@ Graphics::Graphics() : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Maze 
         std::cerr << "警告：字体加载失败，文字无法显示\n";
     }
 }
+void Graphics::calculateCellSize(const Map& map) 
+{
+   if (map.getWidth() == 0 || map.getHeight() == 0) {
+       cellSize = 40;  // 默认值
+       return;
+   }
+
+   // 计算基于窗口宽度和地图宽度的最大可能格子大小
+   int maxWidthBased = WINDOW_WIDTH / map.getWidth();
+   // 计算基于窗口高度和地图高度的最大可能格子大小
+   int maxHeightBased = WINDOW_HEIGHT / map.getHeight();
+
+   // 取较小值作为格子大小（确保地图能完整显示）
+   cellSize = std::min(maxWidthBased, maxHeightBased);
+
+   // 限制最小格子大小（避免过小无法显示）
+   cellSize = std::max(cellSize, 10);  // 最小10像素
+}
 bool Graphics::pollEvent(sf::Event& event) 
 {
     return window.pollEvent(event);  
@@ -52,8 +70,8 @@ void Graphics::display()
 
 void Graphics::drawMap(const Map& map) 
 {
-    int mapWidth = map.getWidth() * CELL_SIZE;
-    int mapHeight = map.getHeight() * CELL_SIZE;
+    int mapWidth = map.getWidth() * cellSize;
+    int mapHeight = map.getHeight() * cellSize;
     int offsetX = (WINDOW_WIDTH - mapWidth) / 2;
     int offsetY = (WINDOW_HEIGHT - mapHeight) / 2;
     
@@ -61,8 +79,8 @@ void Graphics::drawMap(const Map& map)
     {
         for (int x = 0; x < map.getWidth(); x++) 
         {
-            sf::RectangleShape cell(sf::Vector2f(CELL_SIZE, CELL_SIZE));
-            cell.setPosition(x * CELL_SIZE + offsetX, y * CELL_SIZE + offsetY);
+            sf::RectangleShape cell(sf::Vector2f(cellSize, cellSize));
+            cell.setPosition(x * cellSize + offsetX, y * cellSize + offsetY);
             
             // 根据地图元素设置颜色
             if (!map.isExplored(x, y)) 
@@ -89,11 +107,11 @@ void Graphics::drawMap(const Map& map)
     // 绘制终点（绿色方块）
     if (map.isExplored(map.getEndX(), map.getEndY())) 
     {
-        sf::RectangleShape endMarker(sf::Vector2f(CELL_SIZE, CELL_SIZE));
+        sf::RectangleShape endMarker(sf::Vector2f(cellSize, cellSize));
         // 关键修正：终点位置 = 原有坐标 + 偏移量
         endMarker.setPosition(
-            map.getEndX() * CELL_SIZE + offsetX,  // 加上X方向偏移
-            map.getEndY() * CELL_SIZE + offsetY   // 加上Y方向偏移
+            map.getEndX() * cellSize + offsetX,  // 加上X方向偏移
+            map.getEndY() * cellSize + offsetY   // 加上Y方向偏移
         );
         endMarker.setFillColor(sf::Color::Green);
         window.draw(endMarker);
@@ -104,10 +122,10 @@ void Graphics::drawPlayer(const Player& player, const Map& map)
 {  
     auto [offsetX, offsetY] = getMapOffset(map);  // 统一偏移
     
-    sf::RectangleShape playerShape(sf::Vector2f(CELL_SIZE - 10, CELL_SIZE - 10));
+    sf::RectangleShape playerShape(sf::Vector2f(cellSize - int(cellSize/4), cellSize - int(cellSize/4)));
     playerShape.setPosition(
-        player.getX() * CELL_SIZE + offsetX + 5,  // 基于地图居中偏移
-        player.getY() * CELL_SIZE + offsetY + 5
+        player.getX() * cellSize + offsetX + int(cellSize/8),  // 基于地图居中偏移
+        player.getY() * cellSize + offsetY + int(cellSize/8)
     );
     playerShape.setFillColor(COLOR_PLAYER);
     window.draw(playerShape);
@@ -121,10 +139,10 @@ void Graphics::drawTraps(const TrapManager& trapManager, const Map& map)
     {
         if (trap.isActive() && map.isExplored(trap.getX(), trap.getY())) 
         {
-            sf::RectangleShape trapShape(sf::Vector2f(CELL_SIZE - 10, CELL_SIZE - 10));
+            sf::RectangleShape trapShape(sf::Vector2f(cellSize - int(cellSize/4), cellSize - int(cellSize/4)));
             trapShape.setPosition(
-                trap.getX() * CELL_SIZE + offsetX + 5,  // 基于地图居中偏移
-                trap.getY() * CELL_SIZE + offsetY + 5
+                trap.getX() * cellSize + offsetX + int(cellSize/8),  // 基于地图居中偏移
+                trap.getY() * cellSize + offsetY + int(cellSize/8)
             );
             trapShape.setFillColor(COLOR_TRAP);
             window.draw(trapShape);

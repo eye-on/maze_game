@@ -13,7 +13,8 @@ class Graphics
 {
 private:
     sf::RenderWindow window;  // 渲染窗口
-    sf::Font font;            
+    sf::Font font;  
+    int cellSize;          
     
 public:
     Graphics();
@@ -49,6 +50,10 @@ public:
     void drawMenuBackground();
     std::pair<int, int> getMapOffset(const Map& map) const;
     sf::RenderWindow& getWindow() { return window; }
+
+    // 计算格子大小
+    void calculateCellSize(const Map& map);  
+    int getCellSize() const { return cellSize; }  
 };
 
 #endif // GRAPHICS_HPP

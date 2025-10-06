@@ -184,9 +184,10 @@ void Game::update()
 
 void Game::render() 
 {
+    
     graphics.clear(sf::Color(20, 20, 30));
-
-
+    graphics.calculateCellSize(map);
+    int cellSize = graphics.getCellSize();
     if (state == GameState::MENU) 
     {
         // 传入窗口引用给draw
@@ -202,19 +203,19 @@ void Game::render()
 
         if (isAutoMode) 
         {
-            graphics.drawText("Auto Mode: ON (F to exit)", CELL_SIZE, CELL_SIZE, 20);
+            graphics.drawText("Auto Mode: ON (F to exit)", cellSize, cellSize, 20);
         } 
         else 
         {
-            graphics.drawText("Auto Mode: OFF (F to enter)", CELL_SIZE, CELL_SIZE, 20);
+            graphics.drawText("Auto Mode: OFF (F to enter)", cellSize, cellSize, 20);
         }
     }
     else if (state == GameState::GAME_OVER) 
     {
         graphics.drawText(
             "Game Over! Press Enter to return to menu", 
-            CELL_SIZE,  // 左边距1个单元格
-            CELL_SIZE / 2  // 顶部边框内（y坐标在迷宫上方）
+            cellSize,  // 左边距1个单元格
+            cellSize / 2  // 顶部边框内（y坐标在迷宫上方）
         );
         menu.setActive(true);
     } 
@@ -222,8 +223,8 @@ void Game::render()
     {
         graphics.drawText(
             "You Win! Press Enter to return to menu", 
-            CELL_SIZE, 
-            CELL_SIZE / 2  // 顶部边框内
+            cellSize, 
+            cellSize / 2  // 顶部边框内
         );
         menu.setActive(true);
     }
@@ -248,6 +249,8 @@ void Game::resetGame()
         state = GameState::MENU;
         return;
     }
+
+    graphics.calculateCellSize(map);
     // 初始化玩家（使用地图的起点）
     player = Player(map.getStartX(), map.getStartY());
     // 生成陷阱
