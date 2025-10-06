@@ -15,7 +15,7 @@ private:
     bool returnPressed = false;   // 回车键按下事件标志
     bool leftMousePressed = false;// 鼠标左键按下事件标志
     MenuState currentState = MenuState::MAIN;
-    std::vector<std::string> mainOptions = {"Start Game", "Exit"};
+    std::vector<std::string> mainOptions = {"Start Game", "Image to Map", "Exit"};
     std::vector<std::string> mapOptions;
     int selectedIndex = 0;  // 0=Start, 1=Exit
     bool isActive = false;

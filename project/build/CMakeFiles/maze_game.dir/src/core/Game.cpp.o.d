@@ -290,4 +290,9 @@ CMakeFiles/maze_game.dir/src/core/Game.cpp.o: \
  /home/owlage/homework2/project/src/core/../../include/core/../ui/../core/Map.hpp \
  /home/owlage/homework2/project/src/core/../../include/core/../ui/../core/TrapManager.hpp \
  /usr/include/c++/13/iostream /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc
+ /usr/include/c++/13/bits/istream.tcc \
+ /home/owlage/homework2/project/src/core/../../include/core/ImageConverter.hpp \
+ /usr/include/c++/13/fstream \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+ /usr/include/c++/13/bits/fstream.tcc

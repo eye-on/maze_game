@@ -68,6 +68,7 @@ void Menu::handleEvent(const sf::Event& event)
 }
 int Menu::handleInput(const sf::RenderWindow& window) 
 {  
+    int maxIndex = 2;
     if (!isActive) 
     {
         return -1;
@@ -90,9 +91,19 @@ int Menu::handleInput(const sf::RenderWindow& window)
             returnPressed = false;
             if (selectedIndex == 0) 
             {
+                // 原"Start Game"逻辑（进入地图选择）
                 currentState = MenuState::MAP_SELECT;
-                selectedIndex = 0;  // 重置选择索引
-                return -1;  // 不触发任何动作，只是切换状态
+                selectedIndex = 0;
+            } 
+            else if (selectedIndex == 1) 
+            {
+                // 新按钮"Image to Map"：返回标识2
+                return 2; 
+            }
+            else if (selectedIndex == 2) 
+            {
+                // 原"Exit"逻辑
+                return 1;
             }
             return selectedIndex;
         }
@@ -117,7 +128,8 @@ int Menu::handleInput(const sf::RenderWindow& window)
     {
         selectedIndex--;
         upPressed = false; // 处理后重置标志
-    } else if (downPressed && selectedIndex < 1) 
+    } 
+    else if (downPressed && selectedIndex < maxIndex) 
     {
         selectedIndex++;
         downPressed = false; // 处理后重置标志

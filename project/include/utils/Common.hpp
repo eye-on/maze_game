@@ -26,4 +26,3 @@ const float TRAP_ACTIVE_TIME = 5.0f;    // 陷阱激活状态持续时间
 const float TRAP_COOLDOWN_TIME = 3.0f;  // 陷阱冷却时间
 #endif // COMMON_HPP
 
-//注意，地图大小不要超过33x28

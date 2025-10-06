@@ -1,7 +1,7 @@
 #include "../../include/core/Game.hpp"
 #include <SFML/Window/Keyboard.hpp>
 #include <iostream>
-
+#include "../../include/core/ImageConverter.hpp"
 Game::Game() 
     : state(GameState::MENU), 
       player(0, 0),  // 初始位置会在resetGame中更新
@@ -82,21 +82,28 @@ void Game::handleInput()
 
     if (state == GameState::MENU) 
     {
-        // 传入窗口引用给handleInput
         int menuResult = menu.handleInput(graphics.getWindow());
         if (menuResult == 1) 
         { 
+            // 退出游戏
             graphics.getWindow().close();
-        }  
-        else if (menuResult >= 100) 
+        } 
+        else if (menuResult == 2) 
         {
-            // 地图选择结果
+            // 执行图片转换（使用固定路径示例）
+            bool success = ImageConverter::convertImageToMap(
+                "assets/images/input_binary.png",  // 输入图片路径（二值化图片）
+                "assets/maps/converted_map.txt"    // 输出地图路径
+            );
+            // 可添加转换结果提示（如弹窗或日志）
+        }
+        else if (menuResult >= 100) {
+            // 原地图选择逻辑
             currentMapIndex = menuResult - 100;
-            menu.setActive(false);
             resetGame();
             state = GameState::PLAYING;
         }
-    } 
+    }
     else if (state == GameState::PLAYING) 
     {
         // 玩家移动 - 按键按下时只移动一次
