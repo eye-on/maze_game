@@ -1,0 +1,3 @@
+请在build目录./maze_game打开游戏
+关于图片转地图，第一请使用二值化，这是地址assets/images/map_template.png
+转化后的地图地址为assets/maps/converted_map.txt
